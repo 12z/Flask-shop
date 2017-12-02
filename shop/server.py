@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 
 app = Flask(__name__)
@@ -6,7 +6,18 @@ app = Flask(__name__)
 
 @app.route('/')
 def root():
-    return 'r'
+    products = [
+        {
+            'href': '1',
+            'name': 'one',
+        },
+        {
+            'href': '2',
+            'name': 'two',
+        },
+    ]
+
+    return render_template('products_list.html', products=products)
 
 
 if __name__ == '__main__':
